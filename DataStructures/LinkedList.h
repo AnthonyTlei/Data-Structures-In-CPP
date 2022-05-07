@@ -18,7 +18,7 @@ public:
 
 	void push_back(int);
 
-	void insert_at_begin(int);
+	void insert_at_head(int);
 
 	void insert_at_index(int, int);
 

@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include "DoublyLinkedList.h"
 
 #include <iostream>
 
@@ -18,10 +19,23 @@ void testLinkedList()
 
 }
 
+void testDoublyLinkedList()
+{
+	DoublyLinkedList list;
+
+	for (int i = 0; i < 10; i++)
+	{
+		list.insert_at_head(i);
+	}
+
+	list.print();
+	list.print_reverse();
+}
+
 int main()
 {
-	testLinkedList();
-
+	//testLinkedList();
+	testDoublyLinkedList();
 	
 
 	return 0;

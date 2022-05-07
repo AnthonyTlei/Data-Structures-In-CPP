@@ -20,7 +20,7 @@ void LinkedList::push_back(int data)
 	++m_size;
 }
 
-void LinkedList::insert_at_begin(int data)
+void LinkedList::insert_at_head(int data)
 {
 	Node* newNode = new Node(data);
 
@@ -35,7 +35,7 @@ void LinkedList::insert_at_index(int index, int data)
 
 	if (index == 0) 
 	{
-		LinkedList::insert_at_begin(data);
+		LinkedList::insert_at_head(data);
 		return;
 	}
 
