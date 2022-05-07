@@ -7,21 +7,39 @@
 
 class LinkedList
 {
-	Node* head;
+	Node* m_head;
+	int m_size{ 1 };
 
 public:
 
 	LinkedList()
-		: head{ nullptr }
+		: m_head{ nullptr }
 	{}
 
 	void push_back(int);
 
+	void insert_at_begin(int);
+
+	void insert_at_index(int, int);
+
+	void delete_at_index(int);
+
+	void reverse_iterative();
+	void reverse_recursive(Node*);
+
+	const int size() const { return m_size; }
+	const Node* head() const { return m_head; }
+	Node* head() { return m_head; }
+
 	void print();
+
+	void print_recursive(const Node* node);
+	
+	void print_recursive_reverse(const Node* node);
 
 	~LinkedList()
 	{
-		Node* current = head;
+		Node* current = m_head;
 		Node* next;
 		while (current != nullptr)
 		{
@@ -29,7 +47,7 @@ public:
 			delete current;
 			current = next;
 		}
-		head = nullptr;
+		m_head = nullptr;
 	}
 };
 
