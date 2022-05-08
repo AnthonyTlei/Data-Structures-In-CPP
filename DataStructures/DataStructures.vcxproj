@@ -143,12 +143,15 @@
     <ClCompile Include="DataStructures.cpp" />
     <ClCompile Include="DoublyLinkedList.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="LinkedListStack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="DoublyNode.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LinkedListStack.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

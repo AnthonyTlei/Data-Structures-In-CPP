@@ -186,3 +186,8 @@ void LinkedList::print_recursive_reverse(const Node* node)
 	print_recursive_reverse(node->next);
 	std::cout << node->data << ' ';
 }
+
+bool LinkedList::isEmpty()
+{
+	return (m_size == 0);
+}

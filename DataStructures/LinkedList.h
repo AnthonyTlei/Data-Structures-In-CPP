@@ -37,6 +37,8 @@ public:
 	
 	void print_recursive_reverse(const Node* node);
 
+	bool isEmpty();
+
 	~LinkedList()
 	{
 		Node* current = m_head;

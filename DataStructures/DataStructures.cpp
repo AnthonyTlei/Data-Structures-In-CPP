@@ -1,5 +1,6 @@
 #include "LinkedList.h"
 #include "DoublyLinkedList.h"
+#include "LinkedListStack.h"
 
 #include <iostream>
 
@@ -32,10 +33,24 @@ void testDoublyLinkedList()
 	list.print_reverse();
 }
 
+void testStack()
+{
+	LinkedListStack stack;
+	for (int i = 0; i < 5; i++)
+	{
+		stack.push(i);
+	}
+	stack.print();
+	stack.pop();
+	stack.print();
+	std::cout << stack.top() << '\n';
+}
+
 int main()
 {
 	//testLinkedList();
-	testDoublyLinkedList();
+	//testDoublyLinkedList();
+	testStack();
 	
 
 	return 0;
