@@ -119,6 +119,65 @@ int evaluatePostFix(std::string exp)
 	return S.top();
 }
 
+int evaluatePreFix(std::string exp)
+{
+	std::stack<int> S;
+
+	for (int i = exp.length() - 1; i >= 0; --i)
+	{
+		if (exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/')
+		{
+			int result = 0;
+			int operand1 = S.top();
+			S.pop();
+			int operand2 = S.top();
+			S.pop();
+
+			switch (exp[i])
+			{
+			case '+':
+				result = operand1 + operand2;
+				break;
+			case '-':
+				result = operand1 - operand2;
+				break;
+			case '*':
+				result = operand1 * operand2;
+				break;
+			case '/':
+				result = operand1 / operand2;
+				break;
+			default:
+				break;
+			}
+
+			S.push(result);
+		}
+
+		std::string operand{};
+		while (
+			i >= 0
+			&& exp[i] != ' '
+			&& exp[i] != '+'
+			&& exp[i] != '-'
+			&& exp[i] != '/'
+			&& exp[i] != '*')
+		{
+			operand += exp[i];
+			--i;
+		}
+
+		if (!operand.empty())
+		{
+			std::reverse(operand.begin(), operand.end());
+			S.push(stoi(operand));
+		}
+			
+	}
+
+	return S.top();
+}
+
 void testLinkedList()
 {
 	LinkedList list;
@@ -209,6 +268,14 @@ void testPostFixEvaluator()
 	std::cout << result << '\n';
 }
 
+void testPreFixEvaluator()
+{
+	//std::string exp = "- + * 2 3 * 5 4 9";
+	std::string exp = "- + * 24 3 * 52 45 98";
+	int result = evaluatePreFix(exp);
+	std::cout << result << '\n';
+}
+
 int main()
 {
 	//testLinkedList();
@@ -218,7 +285,8 @@ int main()
 	//testReverseWithPointers();
 	//testBalancedParenthesis();
 
-	testPostFixEvaluator();
+	//testPostFixEvaluator();
+	testPreFixEvaluator();
 	
 
 	return 0;
