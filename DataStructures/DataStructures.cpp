@@ -64,6 +64,61 @@ bool isBalancedParenthesese(std::string s)
 	return stack.empty();
 }
 
+int evaluatePostFix(std::string exp)
+{
+	std::stack<int> S;
+
+	for (int i = 0; i < exp.length(); ++i)
+	{
+		if (exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/')
+		{
+			int result = 0;
+			int operand2 = S.top();
+			S.pop();
+			int operand1 = S.top();
+			S.pop();
+
+			switch (exp[i])
+			{
+			case '+':
+				result = operand1 + operand2;
+				break;
+			case '-':
+				result = operand1 - operand2;
+				break;
+			case '*':
+				result = operand1 * operand2;
+				break;
+			case '/':
+				result = operand1 / operand2;
+				break;
+			default:
+				break;
+			}
+
+			S.push(result);
+		}
+
+		std::string operand{};
+		while (
+			i < exp.length()
+			&&exp[i] != ' '
+			&& exp[i] != '+'
+			&& exp[i] != '-'
+			&& exp[i] != '/'
+			&& exp[i] != '*')
+		{
+			operand += exp[i];
+			++i;
+		}
+
+		if(!operand.empty())
+			S.push(stoi(operand));
+	}
+
+	return S.top();
+}
+
 void testLinkedList()
 {
 	LinkedList list;
@@ -146,6 +201,14 @@ void testBalancedParenthesis()
 	}
 }
 
+void testPostFixEvaluator()
+{
+	//std::string exp = "2 3 * 5 4 * + 9 -";
+	std::string exp = "10 12 * 9 21 * + 2 -";
+	int result = evaluatePostFix(exp);
+	std::cout << result << '\n';
+}
+
 int main()
 {
 	//testLinkedList();
@@ -154,6 +217,9 @@ int main()
 	//testReverseWithStack();
 	//testReverseWithPointers();
 	//testBalancedParenthesis();
+
+	testPostFixEvaluator();
+	
 
 	return 0;
 }
