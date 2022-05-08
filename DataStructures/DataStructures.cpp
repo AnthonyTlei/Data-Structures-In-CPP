@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <stack>
+#include <string>
 
 void reverseStringWithStack(char* arr, int n)
 {
@@ -33,6 +34,34 @@ void reverseWithPointers(char* C)
 		++left;
 		--right;
 	}
+}
+
+bool isBalancedParenthesese(std::string s)
+{
+	std::stack<char> stack;
+
+	for (int i = 0; i < s.length(); ++i)
+	{
+		if (s[i] == '(' || s[i] == '[' || s[i] == '{')
+		{
+			stack.push(s[i]);
+		}
+		else if (s[i] == ')' || s[i] == ']' || s[i] == '}') 
+		{
+			if (stack.empty()
+				|| (s[i] == ')' && stack.top() != '(')
+				|| (s[i] == ']' && stack.top() != '[')
+				|| (s[i] == '}' && stack.top() != '{'))
+			{
+				return false;
+			}
+			else
+			{
+				stack.pop();
+			}
+		}
+	}
+	return stack.empty();
 }
 
 void testLinkedList()
@@ -103,6 +132,20 @@ void testReverseWithPointers()
 	std::cout << C << '\n';
 }
 
+void testBalancedParenthesis()
+{
+	std::string s { "{[()()][()]}" };
+
+	if (isBalancedParenthesese(s))
+	{
+		std::cout << "Balanced\n";
+	}
+	else
+	{
+		std::cout << "NOT Balanced\n";
+	}
+}
+
 int main()
 {
 	//testLinkedList();
@@ -110,7 +153,7 @@ int main()
 	//testStack();
 	//testReverseWithStack();
 	//testReverseWithPointers();
-	
+	//testBalancedParenthesis();
 
 	return 0;
 }
