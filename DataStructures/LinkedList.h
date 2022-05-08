@@ -4,6 +4,7 @@
 #include "Node.h"
 
 #include <iostream>
+#include <stack>
 
 class LinkedList
 {
@@ -26,6 +27,7 @@ public:
 
 	void reverse_iterative();
 	void reverse_recursive(Node*);
+	void reverse_with_stack();
 
 	const int size() const { return m_size; }
 	const Node* head() const { return m_head; }

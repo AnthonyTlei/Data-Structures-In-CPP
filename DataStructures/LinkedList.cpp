@@ -157,6 +157,30 @@ void LinkedList::reverse_recursive(Node* p)
 	p->next = nullptr;
 }
 
+void LinkedList::reverse_with_stack()
+{
+	std::stack<Node*> S;
+	Node* temp = m_head;
+	while (temp != nullptr)
+	{
+		S.push(temp);
+		temp = temp->next;
+	}
+
+	temp = S.top();
+	m_head = temp;
+	S.pop();
+
+	while (!S.empty())
+	{
+		temp->next = S.top();
+		S.pop();
+		temp = temp->next;
+	}
+
+	temp->next = nullptr;
+}
+
 void LinkedList::print()
 {
 	if (m_head == nullptr) {
